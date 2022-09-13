@@ -21,6 +21,7 @@ class LoginView extends Dbh{
 			exit();
 			}elseif($checkPass == true){
 				$sql = "SELECT * FROM users WHERE userName = ? OR email = ? AND password = ?";
+				$stmt = $this->connection()->prepare($sql);
 
 				if(!$stmt->execute(array($userName, $userName, $password))){
 				$stmt = null;
